@@ -1,0 +1,26 @@
+/* index.css dosyasının tam ve yeni içeriği */
+
+body {
+  /* --- VARSAYILAN KODLAR --- */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ====> ARKA PLAN İÇİN DOĞRU KOD <==== */
+
+  /* Resmin yolunu, src klasörünün içindeki assets klasörüne göre belirtiyoruz */
+  
+  /* Diğer stil kuralları aynı kalıyor */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
