@@ -1,0 +1,63 @@
+.user-activity-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: 'background.default';
+  
+    .activity-header {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    .activity-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+  
+      button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        background-color: #ddd;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+  
+        &.active {
+          background-color: #007bff;
+          color: white;
+        }
+  
+        &:hover:not(.active) {
+          background-color: #ccc;
+        }
+      }
+    }
+  
+    .activity-content {
+      .comment-activity, .like-activity {
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color:'background.default'
+  
+        p {
+          margin: 0;
+        }
+  
+        a {
+          color: #007bff;
+          text-decoration: none;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  

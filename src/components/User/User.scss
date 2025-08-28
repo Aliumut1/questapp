@@ -1,0 +1,15 @@
+.user-container {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+  }
+  
+  .user-left-column {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .user-right-column {
+    flex: 3;
+  }
+  

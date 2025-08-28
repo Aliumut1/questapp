@@ -18,34 +18,46 @@ function PostForm(props) {
     const [open, setOpen] = useState(false); // Snackbar için state
 
     const handlePostSubmit = () => {
-        if (!title.trim() || !text.trim()) {
-            alert("Title ve Text boş bırakılamaz!");
-            return;
-        }
+    if (!title.trim() || !text.trim()) {
+        alert("Title ve Text boş bırakılamaz!");
+        return;
+    }
 
-        const postRequest = {
-            title: title,
-            text: text,
-            userId: userId 
-        };
-
-        fetch("/posts", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(postRequest),
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log("Yeni post oluşturuldu:", data);
-            setTitle("");
-            setText("");
-            if (refreshPosts) {
-                refreshPosts();
-            }
-            setOpen(true); // Başarılı olunca Snackbar'ı aç
-        })
-        .catch(err => console.log(err));
+    const postRequest = {
+        title: title,
+        text: text,
+        userId: parseInt(userId) // 🔑 Long olarak gönder
     };
+
+        console.log("Backend'e gönderilen post isteği:", postRequest);
+fetch("http://localhost:8080/posts", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization":localStorage.getItem("tokenKey")
+    },
+    body: JSON.stringify(postRequest),
+})
+
+
+    .then(res => {
+        if (!res.ok) {
+            return res.text().then(text => { throw new Error(text || "Post creation failed") });
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("Yeni post oluşturuldu:", data);
+        setTitle("");
+        setText("");
+        if (refreshPosts) refreshPosts();
+        setOpen(true);
+    })
+    .catch(err => {
+        console.error("Post gönderme hatası:", err);
+        alert("Post gönderilemedi: " + err.message);
+    });
+};
 
     // Snackbar'ı kapatacak olan ayrı ve temiz bir fonksiyon
     const handleClose = (event, reason) => {

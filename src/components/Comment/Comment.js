@@ -1,6 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { Avatar, Typography, Box } from "@mui/material"; // Gerekli bileşenleri import ediyoruz
+import { Avatar, Typography, Box } from "@mui/material";
 
 function Comment(props) {
     const { text, userId, userName } = props;
@@ -11,14 +10,13 @@ function Comment(props) {
     };
 
     return (
-        // OutlinedInput yerine, daha basit ve esnek olan Box + Typography kullandık
         <Box 
             sx={{
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "flex-start",
                 alignItems: "center",
-                marginBottom: 2 // Yorumlar arasına boşluk koyalım
+                marginBottom: 2
             }}
         >
             <Link to={`/users/${userId}`} style={linkStyle}>
@@ -26,12 +24,11 @@ function Comment(props) {
                     sx={{
                         width: 32,
                         height: 32,
-                        marginRight: 2,
-                        // İsteğe bağlı: Avatar rengini belirleyebilirsiniz
-                        // bgcolor: 'orange' 
+                        marginRight: 2
                     }}
                 >
-                    {userName.charAt(0).toUpperCase()}
+                    {/* Bu yapının doğru olduğundan emin olun */}
+                    {userName ? userName.charAt(0).toUpperCase() : 'U'}
                 </Avatar>
             </Link>
             
